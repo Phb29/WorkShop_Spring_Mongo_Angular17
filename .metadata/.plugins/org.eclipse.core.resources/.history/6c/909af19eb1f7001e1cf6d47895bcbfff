@@ -1,0 +1,5 @@
+package com.paulo.workshopmongo.repository;
+
+public interface UserRepository {
+
+}
