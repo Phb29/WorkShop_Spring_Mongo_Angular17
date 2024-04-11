@@ -1,0 +1,5 @@
+package com.paulo.workshopmongo.dto;
+
+public class AuthorDto {
+
+}

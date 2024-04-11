@@ -1,0 +1,20 @@
+package com.paulo.workshopmongo.dto;
+
+import com.paulo.workshopmongo.domain.User;
+
+public class AuthorDto {
+
+	private String id;
+	private String name;
+	
+		public AuthorDto(){
+			
+			
+		}
+		
+			public AuthorDto(User obj) {
+				
+				id=obj.getId();
+				name=obj.getName();
+			}
+}
