@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import com.paulo.workshopmongo.domain.User;
@@ -44,31 +43,6 @@ public class UserService {
 	public User fromDto(UserDto objDto) {
 
 		return new User(objDto.getId(), objDto.getName(), objDto.getEmail());
-	}
-	public User update(User obj) {
-	    Optional<User> userOptional = repo.findById(obj.getId());
-	    
-	 
-	    if (userOptional.isPresent()) {
-	   
-	        User existingUser = userOptional.get();
-	        
-	  
-	        updateData(existingUser, obj);
-	        
-	 
-	        return repo.save(existingUser);
-	    } else {
-	      
-	        throw new EmptyResultDataAccessException("Usuário não encontrado com ID: " + obj.getId(), 0);
-	    }
-	}
-
-	private void updateData(User existingUser, User obj) {
-	    
-	    existingUser.setName(obj.getName());
-	    existingUser.setEmail(obj.getEmail());
-	    
 	}
 
 }

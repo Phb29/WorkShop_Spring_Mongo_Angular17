@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import com.paulo.workshopmongo.domain.User;
@@ -46,29 +45,32 @@ public class UserService {
 		return new User(objDto.getId(), objDto.getName(), objDto.getEmail());
 	}
 	public User update(User obj) {
+	    // Busca o usuário no banco de dados pelo ID fornecido
 	    Optional<User> userOptional = repo.findById(obj.getId());
 	    
-	 
+	    // Verifica se o usuário existe
 	    if (userOptional.isPresent()) {
-	   
+	        // Se o usuário existe, obtém o objeto do usuário
 	        User existingUser = userOptional.get();
 	        
-	  
+	        // Atualiza os dados do usuário existente com os dados fornecidos no objeto 'obj'
 	        updateData(existingUser, obj);
 	        
-	 
+	        // Salva e retorna o usuário atualizado
 	        return repo.save(existingUser);
 	    } else {
-	      
-	        throw new EmptyResultDataAccessException("Usuário não encontrado com ID: " + obj.getId(), 0);
+	        // Se o usuário não existe, você pode lançar uma exceção ou lidar com isso de outra maneira,
+	        // dependendo dos requisitos do seu aplicativo
+	        throw new EntityNotFoundException("Usuário não encontrado com ID: " + obj.getId());
 	    }
 	}
 
 	private void updateData(User existingUser, User obj) {
-	    
+	    // Atualiza os campos do usuário existente com os dados fornecidos no objeto 'obj'
+	    // Implemente esta lógica conforme necessário para os campos que deseja atualizar
 	    existingUser.setName(obj.getName());
 	    existingUser.setEmail(obj.getEmail());
-	    
+	    // Adicione outras atualizações conforme necessário
 	}
 
 }
