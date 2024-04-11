@@ -1,0 +1,15 @@
+package com.paulo.workshopmongo.domain;
+
+import java.sql.Date;
+
+public class Post {
+
+	private String id;
+	private Date date;
+	private String title;
+	private String body;
+	
+	private Post() {}
+	
+	
+}
