@@ -21,25 +21,25 @@ public class Instantiation implements CommandLineRunner {
 	@Autowired
 	private PostRepository postRepo;
 
-
 	@Override
 	public void run(String... args) throws Exception {
-		
-		SimpleDateFormat  sdf= new SimpleDateFormat("yyyy-MM-dd");
-        sdf.setTimeZone(TimeZone.getTimeZone("GTM"));
+
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		sdf.setTimeZone(TimeZone.getTimeZone("GTM"));
 		repo.deleteAll();
 		postRepo.deleteAll();
 		User maria = new User(null, "Maria Brown", "maria@gmail.com");
 		User alex = new User(null, "Alex Green", "alex@gmail.com");
 		User bob = new User(null, "Bob Grey", "bob@gmail.com");
 		repo.saveAll(Arrays.asList(maria, alex, bob));
-		
-		Post post2 = new Post(null, sdf.parse("2018-03-21"), "Partiu viagem", "Vou viajar para São Paulo. Abraços!",new AuthorDto(maria));
 
+		Post post2 = new Post(null, sdf.parse("2018-03-21"), "Partiu viagem", "Vou viajar para São Paulo. Abraços!",
+				new AuthorDto(maria));
 
-		
-	
 		postRepo.saveAll(Arrays.asList(post2));
+
+		maria.getPost().addAll(Arrays.asList(post2));
+		repo.save(maria);
 	}
 
 }

@@ -47,7 +47,6 @@ INDEX VERSION 1.134+C:\Users\paulo\OneDrive\Área de Trabalho\workshops-spring-an
 2229928352.index
 3163905394.index
 1860180094.index
-3316578462.index
 769608029.index
 596867001.index
 2009615927.index
