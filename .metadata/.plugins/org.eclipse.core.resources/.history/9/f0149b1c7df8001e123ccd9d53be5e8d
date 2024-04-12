@@ -1,0 +1,11 @@
+package com.paulo.workshopmongo.dto;
+
+import java.util.Date;
+
+public class CommnetDto {
+	
+	private String text;
+	private Date date;
+	private AuthorDto author;
+
+}
